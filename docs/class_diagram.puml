@@ -60,3 +60,5 @@ Stock --> Article
 Category --> Article
 Brand --> Article
 Receipt_Type --> Receipt
+
+@enduml
