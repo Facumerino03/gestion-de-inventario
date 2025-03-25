@@ -5,41 +5,40 @@ class Article {
     - description: str
     - category: Category
     - brand: Brand
+    - minimun_stock: float
+    - ean13_code: str
 
 }
 
-class Receipt_Type {
+class ReceiptType {
     - name: str
     - description: str
     - type: int // 1: in, 0: transfer, -1: out
 }
 
 class Receipt {
-    - header: Receipt_Header
-    - contents: Receipt_Content
-    - footer: Receipt_Footer
+    - header: ReceiptHeader
+    - contents: ReceiptItem
+    - footer: ReceiptFooter
 }
 
-class Receipt_Header {
+class ReceiptHeader {
     - submission_date: datetime
-    - type: Receipt_type
+    - type: ReceiptType
 
 }
 
-class Receipt_Content {
+class ReceiptContent {
     - articles: Article
     - quantity: float
+    - batch: Batch
 
 }
 
-class Receipt_Footer {
+class ReceiptFooter {
     - total: float
 
 }
-
-Receipt_Header --> Receipt
-Receipt_Content --> Receipt
-Receipt_Footer --> Receipt
 
 class Category {
     - name: str
@@ -52,13 +51,26 @@ class Brand {
 }
 
 class Stock {
-    - contents: Receipt_Content
+    - contents: ReceiptItem
 }
 
+class Notification {
+    - message: str
+    - type: int // 1: info, 0: warning, -1: error
+    - date: datetime
+}
 
+class Batch {
+    - batch_number: int
+    - expiration_date: datetime
+}
+
+ReceiptHeader --- Receipt
+ReceiptItem --- Receipt
+ReceiptFooter --- Receipt
 Stock --> Article
 Category --> Article
 Brand --> Article
-Receipt_Type --> Receipt
+ReceiptType --> Receipt
 
 @enduml
