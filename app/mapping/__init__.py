@@ -1,0 +1,1 @@
+from .brand_schema import BrandSchema
