@@ -2,8 +2,8 @@ import unittest
 from flask import current_app
 from app import create_app, db
 import os
-#from app.models import Brand
-#from app.repositories import BrandRepository
+from app.models import Brand
+from app.repositories import BrandRepository
 
 repository = BrandRepository()
 
