@@ -1,2 +1,2 @@
 from .brand_services import BrandService
-from .message import MessageService
+from .message import Message, MessageBuilder

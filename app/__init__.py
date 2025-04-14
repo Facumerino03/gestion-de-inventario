@@ -4,6 +4,7 @@ from app.config import config
 from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from app.routes import RouteApp
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -23,6 +24,8 @@ def create_app() -> Flask:
     marshmallow.init_app(app)
     db.init_app(app)
     migrate.init_app(app, db)
+    route = RouteApp()
+    route.init_app(app)
     
     @app.shell_context_processor    
     def ctx():
